@@ -10,7 +10,7 @@
         </li>
         <li>
           <label for="password">パスワード</label>
-          <input type="text" id="password" v-model="password">
+          <input type="password" id="password" v-model="password">
         </li>
       </ul>
     </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 
 export default {
@@ -36,6 +37,18 @@ export default {
   },
   methods: {
     //ログイン処理
+    login() {
+      axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA70JNTYroQo3pBY9ZqYo8xlsUlIRN35FU',
+      {
+        email: this.email,
+        password: this.password,
+        returnSecureToken: true
+      }
+      ).then(() => {
+        this.email = '';
+        this.password = '';
+      })
+    }
   }
 }
 </script>

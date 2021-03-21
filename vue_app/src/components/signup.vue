@@ -14,7 +14,7 @@
         </li>
         <li>
           <label for="password">パスワード</label>
-          <input type="text" id="password" style="width:150px" v-model="password">
+          <input type="password" id="password" style="width:150px" v-model="password">
         </li>
       </ul>
     </div>
@@ -23,7 +23,7 @@
       <router-link to="./login" class="btn">ログインはこちら</router-link>
     </div>
     <footer>
-      <p>Copyright @2019 ⚪︎⚪︎ Inc All rights reserved</p>
+      <small>Copyright @2019 ⚪︎⚪︎ Inc All rights reserved</small>
     </footer>
   </div>
 </template>

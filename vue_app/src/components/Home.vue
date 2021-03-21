@@ -1,7 +1,8 @@
 <template>
   <div>
     <img alt="Vue logo" src="../assets//logo.png">
-    <h1></h1>
+    <h1>test</h1>
+    <p>{{ }}</p>
     <button>サインアウト</button>
   </div>
 </template>
