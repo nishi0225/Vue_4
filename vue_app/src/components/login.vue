@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '../axios-auth.js'
 
 
 export default {
@@ -38,16 +38,19 @@ export default {
   methods: {
     //ログイン処理
     login() {
-      axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA70JNTYroQo3pBY9ZqYo8xlsUlIRN35FU',
+      axios.post('/accounts:signInWithPassword?key=AIzaSyA70JNTYroQo3pBY9ZqYo8xlsUlIRN35FU',
       {
         email: this.email,
         password: this.password,
         returnSecureToken: true
-      }
-      ).then(() => {
+      }).
+      then(() => {
         this.email = '';
         this.password = '';
       })
+      .catch(error => {
+        console.log(error);
+      });
     }
   }
 }
