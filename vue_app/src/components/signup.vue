@@ -14,7 +14,7 @@
         </li>
         <li>
           <label for="password">パスワード</label>
-          <input type="text" id="password" style="width:150px" v-model="password">
+          <input type="password" id="password" style="width:150px" v-model="password">
         </li>
       </ul>
     </div>
@@ -23,7 +23,7 @@
       <router-link to="./login" class="btn">ログインはこちら</router-link>
     </div>
     <footer>
-      <p>Copyright @2019 ⚪︎⚪︎ Inc All rights reserved</p>
+      <small>Copyright @2019 ⚪︎⚪︎ Inc All rights reserved</small>
     </footer>
   </div>
 </template>
@@ -31,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+import instance from '../axios-auth.js';
 
 
 export default {
@@ -45,7 +46,7 @@ export default {
 
   methods: {
     register() {
-      axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA70JNTYroQo3pBY9ZqYo8xlsUlIRN35FU',
+      instance.post('/accounts:signUp?key=AIzaSyA70JNTYroQo3pBY9ZqYo8xlsUlIRN35FU',
       {
         email: this.email,
         password: this.password,
@@ -68,12 +69,15 @@ export default {
             integerValue: this.wallet
           }
         }
-      }
-      ).then(() => {
+      })
+      .then(() => {
         this.userName = '';
         this.email = '';
         this.password = '';
-      });
+      })
+      .catch(error => {
+        console.log(error);
+      })
     }
   }
 };
